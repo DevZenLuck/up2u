@@ -1,0 +1,42 @@
+.mainDiv {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+  background-color: #f0f0f0;
+}
+
+.subDiv {
+  width: 25%;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.subDiv div {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 20px solid #f0f0f0;
+  position: relative;
+}
+
+.subDiv img {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .subDiv {
+    width: 33.3%;
+  }
+}
+@media (max-width: 750px) {
+  .subDiv {
+    width: 50%;
+  }
+}
+@media (max-width: 450px) {
+  .subDiv {
+    width: 100%;
+  }
+}

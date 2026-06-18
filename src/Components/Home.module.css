@@ -1,0 +1,211 @@
+.ScrollIndicator {
+  bottom: 80px;
+  left: 50%;
+  width: 30px;
+  height: 50px;
+  border: 2px solid #d7d7d7;
+  border-radius: 50px;
+  transform: translateX(-50%);
+  z-index: 5;
+  overflow: hidden;
+  margin: 25px auto;
+}
+.TotalContainer{
+  position: relative;
+  display: block;
+}
+.ScrollIndicator::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin: 8px auto;
+  z-index: 5;
+  animation: scrollFadeOut 2.5s infinite;
+}
+
+@keyframes scrollFadeOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+.Home {
+  width: 100%;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+}
+
+.Hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.HeroVideoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.HeroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.HeroVideoContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(51, 7, 8, 0) 50%,
+    rgba(51, 7, 8, 1) 100%
+  );
+  pointer-events: none;
+}
+
+.HeroContent {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 3;
+  max-width: 800px;
+  animation: fadeIn 2s ease-in-out;
+  padding-top: 200px;
+}
+
+.Heading {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 20px 0;
+
+  mask-image: linear-gradient(-75deg, rgba(0, 0, 0, 0.6) 30%, #000 50%, rgba(0, 0, 0, 0.6) 70%);
+  mask-size: 200%;
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, 0.6) 30%, #000 50%, rgba(0, 0, 0, 0.6) 70%);
+  -webkit-mask-size: 200%;
+
+  animation: shine 2s infinite;
+  -webkit-animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  from {
+    mask-position: 150%;
+    -webkit-mask-position: 150%;
+  }
+  to {
+    mask-position: -50%;
+    -webkit-mask-position: -50%;
+  }
+}
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+.ParallaxSection {
+  height: 60vh;
+  background-image: url("https://media.istockphoto.com/id/1287456867/photo/clear-night-sky-with-milky-way-and-huge-amount-of-stars.jpg?s=612x612&w=0&k=20&c=mX4PtN6zMBVjzukQfWoBuNSnZS48NXxUmGlfxI5tkoE=");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ParallaxHeading {
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .Heading {
+    font-size: 2rem;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container a {
+  font-size: 1.5rem;
+  padding: 1rem 3rem;
+  color: #f4f4f4;
+  text-transform: uppercase;
+}
+
+.btn {
+  text-decoration: none;
+  border: 1px solid #ebce9bbd;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  box-shadow: 1px 1px 25px 10px #ebce9bbd;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    #ebce9bbd,
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.btn:hover:before {
+  left: 100%;
+}

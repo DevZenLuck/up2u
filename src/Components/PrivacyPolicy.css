@@ -1,0 +1,21 @@
+.privacy-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+h1,
+h2 {
+  margin-bottom: 20px;
+}
+
+h3,
+h4 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+ul {
+  padding-left: 20px;
+}
