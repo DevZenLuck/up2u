@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import "./App.css";
+import Cursor from "./Components/Cursor";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div>
+      <Cursor />
       <Header
         scrollToHome={() => scrollToSection(homeRef)}
         scrollToAbout={() => scrollToSection(aboutRef)}
