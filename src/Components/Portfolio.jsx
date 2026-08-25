@@ -7,29 +7,77 @@ const videoModules = import.meta.glob("../Assets/reels/*.mp4", { eager: true });
 const videoUrls = Object.values(videoModules).map(m => m.default);
 
 const categoryPool = [
-  { key: "brand", label: "Brand Films" },
-  { key: "corporate", label: "Corporate" },
-  { key: "event", label: "Events" },
-  { key: "short", label: "Short Films" },
-  { key: "social", label: "Social Reels" },
+  { key: "real-estate", label: "Real Estate" },
+  { key: "fashion", label: "Fashion" },
+  { key: "automobiles", label: "Automobiles" },
+  { key: "gym", label: "Gym" },
+  { key: "food", label: "Food" },
+  { key: "service", label: "Service-Based" },
+  { key: "films", label: "Films" },
+  { key: "corporate-events", label: "Corporate Events" },
+  { key: "theatrical-ads", label: "Theatrical Ads" },
 ];
 
 const titlePool = [
-  "Product Showcase", "Corporate Highlight", "Brand Commercial", "Event Coverage",
-  "Cinematic Short", "Social Media Reel", "Gala Highlights", "Founder Story",
-  "Instagram Campaign", "Mini Documentary", "Product Launch", "Wedding Cinematic",
-  "Motion Reel", "Brand Story", "Behind the Scenes", "Testimonial", "Launch Event",
-  "Fashion Film", "Real Estate Tour", "Food Commercial", "Fitness Promo",
-  "Music Video", "Cultural Event", "Tech Explainer", "Travel Diary",
+  "Architects and Interiors", "Property Sales", "All-in-One Fitness Equipment", "CM Silks Legacy",
+  "Architect Consults With Client", "Luxury Farmhouse Architecture Ad", "Wedding Silk Sarees Collection", "Traditional Silk Saree Showcase",
+  "Architectural Brand Intro", "Royal Enfield Scale Models", "Film Career Guidance Ad", "Googee Real Estate Story",
+  "GT Continental Feature Video", "Hunter 350 Feature Video", "KGR Group Brand Story", "New Branch Launch Promo", "Limited-Time Offer Promo",
+  "Fashion Offers Announcement", "Plot Sale Advertisement", "Food Commercial", "Andhra King Event Coverage",
+  "Fitness Center Promotional Ad", "Gym Workout Highlights", "Tech Explainer", "Travel Diary",
   "Portfolio Reel", "Season Campaign", "Festival Special", "Interview Series",
   "Animation Reel", "Drone Tour", "Product Teaser", "Studio Session",
   "Celebration Reel", "Team Profile", "Live Event", "Creative Edit",
-  "Ad Campaign", "Visual Essay", "Highlight Reel", "Concept Film",
-  "Promo Reel", "Showcase", "Feature Film", "Documentary Cut", "After Movie"
+  "Ad Campaign", "Visual Essay", "Highlight Reel", "Kanakalakshmi Saree Product Ad",
+  "Thirumala Silks Saree Showcase", "KGR Developers Future Projects", "Gym Equipment Feature Video", "App Features Demonstration"
 ];
 
-const durationPool = [
-  "0:30", "0:45", "1:00", "1:15", "1:30", "1:45", "2:00", "2:15", "2:30", "3:00"
+const categoryAssignPool = [
+  "real-estate",              // 1. W1 KGR Ad
+  "real-estate",              // 2. T s3
+  "gym",              // 3. SS 10
+  "fashion",            // 4. RUKMINI SILKS (1)
+  "real-estate",            // 5. RS WI
+  "real-estate",            // 6. RS W2 R5D
+  "fashion",            // 7. RS W2 R4 (use trendy auido)
+  "fashion",            // 8. RS W2 R3
+  "real-estate",            // 9. RS W2 R2
+  "automobiles",            // 10. RS W2 R2f
+  "service",            // 11. RS W2 R1
+  "real-estate",            // 12. RS W1 R5
+  "automobiles",            // 13. RS W1 R1
+  "automobiles",            // 14. RS SILKS VER 2
+  "real-estate",            // 15. RS 6
+  "fashion",            // 16. RS 3
+  "fashion",            // 17. RS 2
+  "fashion",            // 18. RS 1
+  "real-estate",              // 19. RK WI II
+  "gym",                // 20. REBORN GYM
+  "films",                // 21. REBORN GYM VER 2
+  "gym",                // 22. RARE GYM AD
+  "gym",              // 23. RAPO WITH MYTHRI
+  "films",              // 24. R S VERTICAL
+  "films",              // 25. Plot final draft
+  "films",              // 26. Maguva signature R3FD
+  "films",              // 27. Maguva signature R1
+  "service",            // 28. KNL 2ND STORE
+  "films",              // 29. KGR w22
+  "automobiles",        // 30. HUNTER 350 Explainer
+  "automobiles",        // 31. GT 650 Explainer
+  "service",            // 32. GOOGEE VER 2
+  "films",              // 33. FILM FELLOWS
+  "service",            // 34. EXPLAINER VID SCALE MODELS
+  "real-estate",        // 35. ER SATYA REDDY'S SREE SNCLAVE
+  "real-estate",        // 36. DWELIO FARM HOUSE AD FD
+  "fashion",            // 37. Dharmavaram Silks RFD
+  "fashion",            // 38. Dharmavaram Silks dsdj
+  "films",              // 39. DA FD
+  "fashion",            // 40. CM SILKS FC
+  "fashion",   // 41. bni fc
+  "fashion",        // 42. AKSHADI VER 2
+  "real-estate",        // 43. AKSHADI HEIGHTS-1
+  "gym",                // 44. Ace Home Gym Ver 2
+  "service",                // 45. ace gym reel 4
 ];
 
 const colorPool = [
@@ -38,14 +86,14 @@ const colorPool = [
 ];
 
 const reels = videoUrls.map((url, i) => {
-  const cat = categoryPool[i % categoryPool.length];
+  const catKey = categoryAssignPool[i % categoryAssignPool.length];
+  const cat = categoryPool.find(c => c.key === catKey);
   return {
     id: i + 1,
     video: url,
     title: titlePool[i % titlePool.length],
     category: cat.key,
     cat_label: cat.label,
-    duration: durationPool[i % durationPool.length],
     featured: false,
     color: colorPool[i % colorPool.length],
   };
@@ -207,7 +255,6 @@ function Portfolio() {
               <div className={classes.reelMeta}>
                 <div className={classes.reelCategory}>{reel.cat_label}</div>
                 <div className={classes.reelTitle}>{reel.title}</div>
-                <div className={classes.reelDuration}>{reel.duration}</div>
               </div>
             </div>
           ))}
@@ -242,7 +289,7 @@ function Portfolio() {
             {currentReel && (
               <>
                 <h3>{currentReel.title}</h3>
-                <p>{currentReel.cat_label} &nbsp;·&nbsp; {currentReel.duration}</p>
+                <p>{currentReel.cat_label}</p>
               </>
             )}
           </div>

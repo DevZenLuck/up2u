@@ -207,13 +207,6 @@
   margin-bottom: 8px;
 }
 
-.reelDuration {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: .2em;
-  color: rgba(201,168,76,.5);
-}
-
 .reelPlay {
   position: absolute;
   top: 50%; left: 50%;
